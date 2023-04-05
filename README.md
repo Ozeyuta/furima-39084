@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| name               | string | null: false               |
+| nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_one :buyer
+- has_one :history
 
 ## items テーブル
 
@@ -24,44 +24,45 @@
 | ------------------ | ----------- | ----------------- |
 | item_name          | string      | null: false       |
 | text               | text        | null: false       |
-| category           | string      | null: false       |
-| status             | string      | null: false       |
-| cost               | string      | null: false       |
-| price              | string      | null: false       |
-| shipping_origin    | string      | null: false       |
-| shipping_days      | string      | null: false       |
-| user_id            | references  | foreign_key: true |
+| category_id        | integer     | null: false       |
+| status_id          | integer     | null: false       |
+| cost_id            | integer     | null: false       |
+| price_id           | integer     | null: false       |
+| shipping_origin_id | integer     | null: false       |
+| shipping_days_id   | integer     | null: false       |
+| user               | references  | foreign_key: true |
 
 ### Association
 
-- belongs_to :buyer
+- has_one :buyer
 - belongs_to :user
 - has_one :history
 
-## history テーブル
+## histories テーブル
 
 | Column             | Type        | Options           |
 | ------------------ | ----------- | ----------------- |
-| buyer_id           | references  | foreign_key: true |
-| item_id            | references  | foreign_key: true |
+| buyer              | references  | foreign_key: true |
+| item               | references  | foreign_key: true |
+| user               | references  | foreign_key: true |
 
 - belongs_to :item
-- belongs_to :buyer
+- has_one :buyer
+- belongs_to :user
 
 ## buyers テーブル
 
 | Column             | Type       | Options           |
 | ------------------ | ---------- | ----------------- |
 | post_code          | string     | null: false       |
-| shipping_origin    | string     | null: false       |
+| shipping_origin_id | integer    | null: false       |
 | city               | string     | null: false       |
 | address            | string     | null: false       |
 | building_name      | string     |                   |
 | phone_number       | string     | null: false       |
-| user_id            | references | foreign_key: true |
+| user               | references | foreign_key: true |
 
 ### Association
 
-- has_many :items
-- belongs_to :user
-- has_one :history
+- belongs_to :item
+- belongs_to :history
