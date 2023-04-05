@@ -16,20 +16,20 @@
 ### Association
 
 - has_many :items
-- has_one :history
+- has_many :histories
 
 ## items テーブル
 
 | Column             | Type        | Options           |
 | ------------------ | ----------- | ----------------- |
 | item_name          | string      | null: false       |
-| text               | text        | null: false       |
+| item_text          | text        | null: false       |
 | category_id        | integer     | null: false       |
 | status_id          | integer     | null: false       |
 | cost_id            | integer     | null: false       |
-| price_id           | integer     | null: false       |
+| price              | integer     | null: false       |
 | shipping_origin_id | integer     | null: false       |
-| shipping_days_id   | integer     | null: false       |
+| shipping_day_id    | integer     | null: false       |
 | user               | references  | foreign_key: true |
 
 ### Association
@@ -42,7 +42,6 @@
 
 | Column             | Type        | Options           |
 | ------------------ | ----------- | ----------------- |
-| buyer              | references  | foreign_key: true |
 | item               | references  | foreign_key: true |
 | user               | references  | foreign_key: true |
 
@@ -60,7 +59,7 @@
 | address            | string     | null: false       |
 | building_name      | string     |                   |
 | phone_number       | string     | null: false       |
-| user               | references | foreign_key: true |
+| history            | references | foreign_key: true |
 
 ### Association
 
