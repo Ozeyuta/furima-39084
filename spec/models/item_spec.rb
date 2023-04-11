@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   end
   describe '商品出品' do
     context '商品出品ができるとき' do
-      it '全ての項目が正しく入力されていれば出品できること' do
+      it 'すべての項目が入力されていれば出品できる' do
         expect(@item).to be_valid
       end
     end
@@ -27,27 +27,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item text can't be blank")
       end
       it 'categoryが未選択だと出品できない' do
-        @item.category_id = 0
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'statusが未選択だと出品できない' do
-        @item.status_id = 0
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it 'costが未選択だと出品できない' do
-        @item.cost_id = 0
+        @item.cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Cost can't be blank")
       end
       it 'shipping_originが未選択だと出品できない' do
-        @item.shipping_origin_id = 0
+        @item.shipping_origin_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
       end
       it 'shipping_dayが未選択だと出品できない' do
-        @item.shipping_day_id = 0
+        @item.shipping_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
