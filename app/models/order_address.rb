@@ -4,9 +4,9 @@ class OrderAddress
 
   with_options presence: true do
     validates :item_id, :user_id, :city, :house_number
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :shipping_origin_id, numericality: { other_than: 1, message: "can't be blank"}
-    validates :phone_number, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
+    validates :shipping_origin_id, numericality: { other_than: 1 }
+    validates :phone_number, format: { with: /\A[0-9]{11}\z/ }
   end
 
   def save
